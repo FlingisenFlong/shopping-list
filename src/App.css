@@ -93,3 +93,13 @@ h1 {
 .btns{
   cursor: pointer;
 }
+.clear-btn{
+  border: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-top: 50px;
+  background-color: #8758ff;
+  color: white;
+}

@@ -24,7 +24,7 @@ export const TodoWrapper = () => {
       const newTodo = { id: uuidv4(), task: todo, completed: false, isEditing: false };
       setTodos((prevTodos) => [...prevTodos, newTodo]);
     }
-  }
+  };
 
   const deleteTodo = (id) => setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
 
@@ -34,7 +34,7 @@ export const TodoWrapper = () => {
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
       )
     );
-  }
+  };
 
   const editTodo = (id) => {
     setTodos((prevTodos) =>
@@ -42,7 +42,7 @@ export const TodoWrapper = () => {
         todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
       )
     );
-  }
+  };
 
   const editTask = (task, id) => {
     setTodos((prevTodos) =>
@@ -50,6 +50,13 @@ export const TodoWrapper = () => {
         todo.id === id ? { ...todo, task, isEditing: !todo.isEditing } : todo
       )
     );
+  };
+
+  const clearAll = () => {
+    const shouldClear = window.confirm("Are you sure you want to clear all items?");
+    if (shouldClear) {
+      setTodos([]);
+    }
   };
 
   return (
@@ -70,6 +77,9 @@ export const TodoWrapper = () => {
           />
         )
       )}
+      <button onClick={clearAll} disabled={todos.length === 0} className="clear-btn">
+        Clear All
+      </button>
     </div>
   );
 };
